@@ -1,0 +1,6 @@
+C:\Users\kkoni\OneDrive\Desktop\Documents\GitHub\PYME.Backend\Pyme.BusinessLogic\bin\Debug\Pyme.BusinessLogic.dll
+C:\Users\kkoni\OneDrive\Desktop\Documents\GitHub\PYME.Backend\Pyme.BusinessLogic\bin\Debug\Pyme.BusinessLogic.pdb
+C:\Users\kkoni\OneDrive\Desktop\Documents\GitHub\PYME.Backend\Pyme.BusinessLogic\obj\Debug\Pyme.BusinessLogic.csproj.AssemblyReference.cache
+C:\Users\kkoni\OneDrive\Desktop\Documents\GitHub\PYME.Backend\Pyme.BusinessLogic\obj\Debug\Pyme.BusinessLogic.csproj.CoreCompileInputs.cache
+C:\Users\kkoni\OneDrive\Desktop\Documents\GitHub\PYME.Backend\Pyme.BusinessLogic\obj\Debug\Pyme.BusinessLogic.dll
+C:\Users\kkoni\OneDrive\Desktop\Documents\GitHub\PYME.Backend\Pyme.BusinessLogic\obj\Debug\Pyme.BusinessLogic.pdb

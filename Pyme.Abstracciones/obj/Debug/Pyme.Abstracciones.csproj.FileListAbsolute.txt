@@ -1,0 +1,6 @@
+C:\Users\kkoni\OneDrive\Desktop\Documents\GitHub\PYME.Backend\Pyme.Abstracciones\bin\Debug\Pyme.Abstracciones.dll
+C:\Users\kkoni\OneDrive\Desktop\Documents\GitHub\PYME.Backend\Pyme.Abstracciones\bin\Debug\Pyme.Abstracciones.pdb
+C:\Users\kkoni\OneDrive\Desktop\Documents\GitHub\PYME.Backend\Pyme.Abstracciones\obj\Debug\Pyme.Abstracciones.csproj.AssemblyReference.cache
+C:\Users\kkoni\OneDrive\Desktop\Documents\GitHub\PYME.Backend\Pyme.Abstracciones\obj\Debug\Pyme.Abstracciones.csproj.CoreCompileInputs.cache
+C:\Users\kkoni\OneDrive\Desktop\Documents\GitHub\PYME.Backend\Pyme.Abstracciones\obj\Debug\Pyme.Abstracciones.dll
+C:\Users\kkoni\OneDrive\Desktop\Documents\GitHub\PYME.Backend\Pyme.Abstracciones\obj\Debug\Pyme.Abstracciones.pdb

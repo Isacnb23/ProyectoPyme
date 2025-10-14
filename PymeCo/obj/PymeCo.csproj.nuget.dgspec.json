@@ -4,6 +4,22 @@
     "C:\\Users\\kkoni\\OneDrive\\Desktop\\Documents\\GitHub\\PYME.Backend\\PymeCo\\PymeCo.csproj": {}
   },
   "projects": {
+    "C:\\Users\\kkoni\\OneDrive\\Desktop\\Documents\\GitHub\\PYME.Backend\\Pyme.Abstracciones\\Pyme.Abstracciones.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\kkoni\\OneDrive\\Desktop\\Documents\\GitHub\\PYME.Backend\\Pyme.Abstracciones\\Pyme.Abstracciones.csproj",
+        "projectName": "Pyme.Abstracciones",
+        "projectPath": "C:\\Users\\kkoni\\OneDrive\\Desktop\\Documents\\GitHub\\PYME.Backend\\Pyme.Abstracciones\\Pyme.Abstracciones.csproj",
+        "UsingMicrosoftNETSdk": false,
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
     "C:\\Users\\kkoni\\OneDrive\\Desktop\\Documents\\GitHub\\PYME.Backend\\PymeCo\\PymeCo.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -31,7 +47,11 @@
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\kkoni\\OneDrive\\Desktop\\Documents\\GitHub\\PYME.Backend\\Pyme.Abstracciones\\Pyme.Abstracciones.csproj": {
+                "projectPath": "C:\\Users\\kkoni\\OneDrive\\Desktop\\Documents\\GitHub\\PYME.Backend\\Pyme.Abstracciones\\Pyme.Abstracciones.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -49,6 +69,12 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

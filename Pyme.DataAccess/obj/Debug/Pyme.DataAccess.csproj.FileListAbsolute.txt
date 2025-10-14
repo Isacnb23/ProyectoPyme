@@ -1,0 +1,6 @@
+C:\Users\kkoni\OneDrive\Desktop\Documents\GitHub\PYME.Backend\Pyme.DataAccess\bin\Debug\Pyme.DataAccess.dll
+C:\Users\kkoni\OneDrive\Desktop\Documents\GitHub\PYME.Backend\Pyme.DataAccess\bin\Debug\Pyme.DataAccess.pdb
+C:\Users\kkoni\OneDrive\Desktop\Documents\GitHub\PYME.Backend\Pyme.DataAccess\obj\Debug\Pyme.DataAccess.csproj.AssemblyReference.cache
+C:\Users\kkoni\OneDrive\Desktop\Documents\GitHub\PYME.Backend\Pyme.DataAccess\obj\Debug\Pyme.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\kkoni\OneDrive\Desktop\Documents\GitHub\PYME.Backend\Pyme.DataAccess\obj\Debug\Pyme.DataAccess.dll
+C:\Users\kkoni\OneDrive\Desktop\Documents\GitHub\PYME.Backend\Pyme.DataAccess\obj\Debug\Pyme.DataAccess.pdb
