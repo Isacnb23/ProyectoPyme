@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Pyme.Abstracciones.LogicaDeNegocio.Producto.EliminarProducto
 {
-    internal class IEliminarProductoLN
+    public interface IEliminarProductoLN
     {
+        int Eliminar(int id);
     }
 }
