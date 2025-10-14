@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace PymeCo.Controllers.NavigationControllers
+namespace PymeCo.Controllers
 {
     public class ClienteController : Controller
     {
-        public IActionResult Index()
+        public IActionResult ListarCliente()
         {
             return View();
         }

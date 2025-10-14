@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace PymeCo.Controllers.NavigationControllers
+namespace PymeCo.Controllers
 {
-    public class ProductoController : Controller
+    public class PedidoController : Controller
     {
         public IActionResult Index()
         {
