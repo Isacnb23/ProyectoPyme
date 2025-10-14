@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kkoni\\OneDrive\\Desktop\\Documents\\GitHub\\PYME.Backend\\PymeCo\\PymeCo.csproj": {}
+    "C:\\Users\\marif\\Documents\\GitHub\\PYME.Backend\\PymeCo\\PymeCo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kkoni\\OneDrive\\Desktop\\Documents\\GitHub\\PYME.Backend\\PymeCo\\PymeCo.csproj": {
+    "C:\\Users\\marif\\Documents\\GitHub\\PYME.Backend\\PymeCo\\PymeCo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kkoni\\OneDrive\\Desktop\\Documents\\GitHub\\PYME.Backend\\PymeCo\\PymeCo.csproj",
+        "projectUniqueName": "C:\\Users\\marif\\Documents\\GitHub\\PYME.Backend\\PymeCo\\PymeCo.csproj",
         "projectName": "PymeCo",
-        "projectPath": "C:\\Users\\kkoni\\OneDrive\\Desktop\\Documents\\GitHub\\PYME.Backend\\PymeCo\\PymeCo.csproj",
-        "packagesPath": "C:\\Users\\kkoni\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kkoni\\OneDrive\\Desktop\\Documents\\GitHub\\PYME.Backend\\PymeCo\\obj\\",
+        "projectPath": "C:\\Users\\marif\\Documents\\GitHub\\PYME.Backend\\PymeCo\\PymeCo.csproj",
+        "packagesPath": "C:\\Users\\marif\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\marif\\Documents\\GitHub\\PYME.Backend\\PymeCo\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\kkoni\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\marif\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
