@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Pyme.Abstracciones.ModelosParaUI;
 
 namespace Pyme.Abstracciones.AccesoADatos.Producto.ListarProducto
 {
-    internal class IListarProductoAD
+    public interface IListarProductoAD
     {
+        List<ProductoDto> Obtener();
     }
 }

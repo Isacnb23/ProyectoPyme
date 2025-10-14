@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Pyme.Abstracciones.AccesoADatos.Producto.EliminarProducto
 {
-    internal class IEliminarProductoAD
+    public interface IEliminarProductoAD
     {
+        int Eliminar(int id);
     }
 }
