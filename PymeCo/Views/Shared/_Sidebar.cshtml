@@ -1,46 +1,45 @@
-﻿@* Views/Shared/_Sidebar.cshtml *@
-<aside class="bg-white flex flex-col min-h-screen w-64 shadow-md border border-gray-200">
+﻿<aside class="bg-white flex flex-col min-h-screen w-64 shadow-md border border-gray-200">
     <nav class="p-4 space-y-2 flex-1">
         <!-- Navigation Links -->
         <a asp-controller="Home" asp-action="Index"
-           class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-500 hover:bg-blue-50 hover:text-blue-600 transition-colors cursor-pointer">
-            <i class="fa-solid fa-house w-5 h-5"></i>
+           class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-500 hover:bg-blue-50 hover:text-[color:var(--primary)] transition-colors">
+            <i data-lucide="home" class="w-5 h-5"></i>
             <span class="font-medium">Dashboard</span>
         </a>
 
         <a asp-controller="Productos" asp-action="Index"
-           class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-500 hover:bg-blue-50 hover:text-blue-600 transition-colors cursor-pointer">
-            <i class="fa-solid fa-box w-5 h-5"></i>
+           class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-500 hover:bg-blue-50 hover:text-[color:var(--primary)] transition-colors">
+            <i data-lucide="package" class="w-5 h-5"></i>
             <span class="font-medium">Productos</span>
         </a>
 
         <a asp-controller="Pedidos" asp-action="Index"
-           class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-500 hover:bg-blue-50 hover:text-blue-600 transition-colors cursor-pointer">
-            <i class="fa-solid fa-cart-shopping w-5 h-5"></i>
+           class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-500 hover:bg-blue-50 hover:text-[color:var(--primary)] transition-colors">
+            <i data-lucide="shopping-cart" class="w-5 h-5"></i>
             <span class="font-medium">Pedidos</span>
         </a>
 
         <a asp-controller="Clientes" asp-action="Index"
-           class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-500 hover:bg-blue-50 hover:text-blue-600 transition-colors cursor-pointer">
-            <i class="fa-solid fa-users w-5 h-5"></i>
+           class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-500 hover:bg-blue-50 hover:text-[color:var(--primary)] transition-colors">
+            <i data-lucide="users" class="w-5 h-5"></i>
             <span class="font-medium">Clientes</span>
         </a>
 
         <a asp-controller="Inventario" asp-action="Index"
-           class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-500 hover:bg-blue-50 hover:text-blue-600 transition-colors cursor-pointer">
-            <i class="fa-solid fa-layer-group w-5 h-5"></i>
+           class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-500 hover:bg-blue-50 hover:text-[color:var(--primary)] transition-colors">
+            <i data-lucide="library" class="w-5 h-5"></i>
             <span class="font-medium">Inventario</span>
         </a>
 
         <!-- Auth Buttons -->
         <div class="mt-8 flex flex-col gap-3">
-            <a asp-controller="Auth" asp-action="Register"
-               class="bg-blue-600 text-white text-center px-4 py-2 rounded-full hover:bg-blue-700 transition-colors">
+            <a asp-controller="Auth" asp-action="Signup"
+               class="bg-[color:var(--primary)] text-white text-center px-4 py-2 rounded-full hover:bg-[color:var(--primary-dark)] transition-colors">
                 Sign Up
             </a>
 
             <a asp-controller="Auth" asp-action="Login"
-               class="bg-white border border-blue-600 text-blue-600 text-center px-4 py-2 rounded-full hover:bg-blue-50 transition-colors">
+               class="bg-white border border-[color:var(--primary)] text-[color:var(--primary)] text-center px-4 py-2 rounded-full hover:bg-blue-50 transition-colors">
                 Log In
             </a>
         </div>

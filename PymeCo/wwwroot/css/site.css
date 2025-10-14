@@ -29,3 +29,25 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+/* Base CSS variables and resets */
+:root {
+    --vt-c-white: #ffffff;
+    --primary: #2563EB;
+    --primary-dark: #1E3A8A;
+    --secondary: #17B594;
+    --accent: #F94F15;
+    --error: #D11919;
+    --warning: #FABB15;
+    --light-bg: #F9FAFB;
+    --dark-bg: #0F132A;
+    --txt-primary: #0F1629;
+    --txt-secondary: #646F80;
+    --border: #D3D5D9;
+    --dark-panel: #1E243B;
+    --light-panel: #FFFFFF;
+    --dark-primary-txt: #F1F5F9;
+    --dark-secondary-txt: #094A3B;
+    --dark-primary: #394DF6;
+    --dark-secondary: #20C5AE;
+}
