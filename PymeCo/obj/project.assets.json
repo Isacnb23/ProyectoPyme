@@ -2022,6 +2022,15 @@
         "build": {
           "buildTransitive/net6.0/_._": {}
         }
+      },
+      "Pyme.Abstracciones/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/Pyme.Abstracciones.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Pyme.Abstracciones.dll": {}
+        }
       }
     }
   },
@@ -5490,11 +5499,17 @@
         "system.threading.tasks.dataflow.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "Pyme.Abstracciones/1.0.0": {
+      "type": "project",
+      "path": "../Pyme.Abstracciones/Pyme.Abstracciones.csproj",
+      "msbuildProject": "../Pyme.Abstracciones/Pyme.Abstracciones.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net9.0": [
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 9.0.0"
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 9.0.0",
+      "Pyme.Abstracciones >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -5528,7 +5543,11 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\kkoni\\OneDrive\\Desktop\\Documents\\GitHub\\PYME.Backend\\Pyme.Abstracciones\\Pyme.Abstracciones.csproj": {
+              "projectPath": "C:\\Users\\kkoni\\OneDrive\\Desktop\\Documents\\GitHub\\PYME.Backend\\Pyme.Abstracciones\\Pyme.Abstracciones.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
