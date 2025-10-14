@@ -1,31 +1,31 @@
 ﻿<aside class="bg-white flex flex-col min-h-screen w-64 shadow-md border border-gray-200">
     <nav class="p-4 space-y-2 flex-1">
         <!-- Navigation Links -->
-        <a asp-controller="Home" asp-action="Index"
+        <a asp-controller="Navigation" asp-action="DashboardView"
            class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-500 hover:bg-blue-50 hover:text-[color:var(--primary)] transition-colors">
             <i data-lucide="home" class="w-5 h-5"></i>
             <span class="font-medium">Dashboard</span>
         </a>
 
-        <a asp-controller="Productos" asp-action="Index"
+        <a asp-controller="Navigation" asp-action="ProductoView"
            class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-500 hover:bg-blue-50 hover:text-[color:var(--primary)] transition-colors">
             <i data-lucide="package" class="w-5 h-5"></i>
             <span class="font-medium">Productos</span>
         </a>
 
-        <a asp-controller="Pedidos" asp-action="Index"
+        <a asp-controller="Navigation" asp-action="PedidoView"
            class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-500 hover:bg-blue-50 hover:text-[color:var(--primary)] transition-colors">
             <i data-lucide="shopping-cart" class="w-5 h-5"></i>
             <span class="font-medium">Pedidos</span>
         </a>
 
-        <a asp-controller="Clientes" asp-action="Index"
+        <a asp-controller="Navigation" asp-action="ClienteView"
            class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-500 hover:bg-blue-50 hover:text-[color:var(--primary)] transition-colors">
             <i data-lucide="users" class="w-5 h-5"></i>
             <span class="font-medium">Clientes</span>
         </a>
 
-        <a asp-controller="Inventario" asp-action="Index"
+        <a asp-controller="Navigation" asp-action="InventarioView"
            class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-500 hover:bg-blue-50 hover:text-[color:var(--primary)] transition-colors">
             <i data-lucide="library" class="w-5 h-5"></i>
             <span class="font-medium">Inventario</span>
