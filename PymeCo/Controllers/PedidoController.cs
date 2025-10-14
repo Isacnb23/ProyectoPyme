@@ -2,9 +2,9 @@
 
 namespace PymeCo.Controllers
 {
-    public class ProductoController : Controller
+    public class PedidoController : Controller
     {
-        public IActionResult ListarProducto()
+        public IActionResult Index()
         {
             return View();
         }

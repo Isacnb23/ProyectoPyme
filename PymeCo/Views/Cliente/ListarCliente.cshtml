@@ -1,7 +1,7 @@
-﻿@* @model IEnumerable<Pyme.Abstracciones.ModelosParaUI.ProductoDto> *@
+﻿@* @model IEnumerable<Pyme.Abstracciones.ModelosParaUI.ClienteDto> *@
 
 @* @{
-    ViewBag.Title = "Listado de Productos";
+    ViewBag.Title = "Listado de Clientes";
 }
 
 <div class="w-full px-6 py-8">
@@ -9,12 +9,12 @@
         <h1 class="text-2xl font-bold text-[color:var(--txt-primary)]">@ViewBag.Title</h1>
 
         <div class="flex items-center gap-3 mt-4 sm:mt-0">
-            <a href="@Url.Action("CrearProducto")"
+            <a href="@Url.Action("CrearCliente")"
                class="px-4 py-2 rounded-xl text-white font-medium bg-[color:var(--primary)] hover:bg-[color:var(--primary-dark)] transition-colors">
-                <i data-lucide="plus" class="inline w-4 h-4 mr-1"></i> Nuevo Producto
+                <i data-lucide="plus" class="inline w-4 h-4 mr-1"></i> Nuevo Cliente
             </a>
 
-            <a id="alertaProductos"
+            <a id="alertaClientes"
                href="#"
                class="px-4 py-2 rounded-xl border border-[color:var(--primary)] text-[color:var(--primary)] hover:bg-[color:var(--primary)] hover:text-white transition-colors font-medium">
                 <i data-lucide="alert-circle" class="inline w-4 h-4 mr-1"></i> Alerta
@@ -28,34 +28,32 @@
                 <tr>
                     <th class="px-6 py-3 text-center font-semibold">Acciones</th>
                     <th class="px-6 py-3 font-semibold">Nombre</th>
-                    <th class="px-6 py-3 font-semibold">Categoría</th>
-                    <th class="px-6 py-3 font-semibold text-right">Precio</th>
-                    <th class="px-6 py-3 font-semibold text-right">Impuesto (%)</th>
-                    <th class="px-6 py-3 font-semibold text-right">Stock</th>
-                    <th class="px-6 py-3 font-semibold">Imagen</th>
-                    <th class="px-6 py-3 font-semibold">Estado</th>
+                    <th class="px-6 py-3 font-semibold">Cédula</th>
+                    <th class="px-6 py-3 font-semibold">Correo</th>
+                    <th class="px-6 py-3 font-semibold">Teléfono</th>
+                    <th class="px-6 py-3 font-semibold">Dirección</th>
                 </tr>
             </thead>
 
             <tbody>
                 @if (Model != null && Model.Any())
                 {
-                    foreach (var producto in Model)
+                    foreach (var cliente in Model)
                     {
                         <tr class="border-t border-[color:var(--border)] hover:bg-[color:var(--light-bg)] transition-colors">
                             <td class="px-6 py-4 text-center">
                                 <div class="flex items-center justify-center gap-4">
-                                    <a href="@Url.Action("EditarProducto", new { id = producto.Id })"
+                                    <a href="@Url.Action("EditarCliente", new { id = cliente.Id })"
                                        class="text-[color:var(--primary)] hover:text-[color:var(--primary-dark)] transition-colors"
                                        title="Editar">
                                         <i data-lucide="pencil-line" class="w-5 h-5"></i>
                                     </a>
-                                    <a href="@Url.Action("EliminarProducto", new { id = producto.Id })"
+                                    <a href="@Url.Action("EliminarCliente", new { id = cliente.Id })"
                                        class="text-[color:var(--error)] hover:text-red-700 transition-colors"
                                        title="Eliminar">
                                         <i data-lucide="trash-2" class="w-5 h-5"></i>
                                     </a>
-                                    <a href="@Url.Action("DetallesProducto", new { id = producto.Id })"
+                                    <a href="@Url.Action("DetallesCliente", new { id = cliente.Id })"
                                        class="text-[color:var(--secondary)] hover:text-emerald-600 transition-colors"
                                        title="Ver Detalles">
                                         <i data-lucide="eye" class="w-5 h-5"></i>
@@ -63,37 +61,19 @@
                                 </div>
                             </td>
 
-                            <td class="px-6 py-4">@producto.Nombre</td>
-                            <td class="px-6 py-4">@producto.CategoriaNombre</td>
-                            <td class="px-6 py-4 text-right">₡@producto.Precio.ToString("N2")</td>
-                            <td class="px-6 py-4 text-right">@producto.ImpuestoPorc.ToString("N2")%</td>
-                            <td class="px-6 py-4 text-right">@producto.Stock</td>
-                            <td class="px-6 py-4">
-                                @if (!string.IsNullOrEmpty(producto.ImagenUrl))
-                                {
-                                    <img src="@producto.ImagenUrl" alt="@producto.Nombre" class="w-12 h-12 rounded-lg object-cover" />
-                                }
-                                else
-                                {
-                                    <span class="text-gray-400 italic">Sin imagen</span>
-                                }
-                    </td>
-                    <td class="px-6 py-4">
-                        <span class="px-3 py-1 rounded-full text-xs font-medium
-                                    @(producto.EstadoProducto == "Activo"
-                                                                      ? "bg-emerald-100 text-emerald-700"
-                                                                      : "bg-red-100 text-red-700")">
-                            @producto.EstadoProducto
-                        </span>
-                    </td>
-                </tr>
-                                }
+                            <td class="px-6 py-4">@cliente.Nombre</td>
+                            <td class="px-6 py-4">@cliente.Cedula</td>
+                            <td class="px-6 py-4">@cliente.Correo</td>
+                            <td class="px-6 py-4">@cliente.Telefono</td>
+                            <td class="px-6 py-4">@cliente.Direccion</td>
+                        </tr>
+                    }
                 }
                 else
                 {
                     <tr>
-                        <td colspan="8" class="px-6 py-6 text-center text-gray-400">
-                            No hay productos registrados.
+                        <td colspan="6" class="px-6 py-6 text-center text-gray-400">
+                            No hay clientes registrados.
                         </td>
                     </tr>
                 }
@@ -101,4 +81,6 @@
         </table>
     </div>
 </div>
+
  *@
+

@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.14.36511.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PymeCo", "PymeCo.csproj", "{A538C719-189E-44E2-9C2C-321255BBD3C4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{183ACA10-5D13-4D00-A69A-41E1A514093D} = {183ACA10-5D13-4D00-A69A-41E1A514093D}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pyme.DataAccess", "..\Pyme.DataAccess\Pyme.DataAccess.csproj", "{9211CB37-A2FB-4528-BC38-ECA6D6D1A847}"
 EndProject

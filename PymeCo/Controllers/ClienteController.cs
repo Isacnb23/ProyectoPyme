@@ -2,9 +2,9 @@
 
 namespace PymeCo.Controllers
 {
-    public class ProductoController : Controller
+    public class ClienteController : Controller
     {
-        public IActionResult ListarProducto()
+        public IActionResult ListarCliente()
         {
             return View();
         }
