@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace Pyme.Abstracciones.ModelosParaUI
 {
-    internal class EstadosDeProducto
+    
+    public static class EstadosDeProducto
     {
+        public static bool Activo = true;
+        public static bool Inactivo = false;
+    }
+
+    public enum EstadosDelProducto
+    {
+        Activo = 1,
+        Inactivo = 2,
+        Cancelado = 3
     }
 }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PymeCo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+efe2002a8fa954395bd98067c55df49217e733d9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+04db1f0c542c0a0b9711007e2c3f7cb1ed7ceffb")]
 [assembly: System.Reflection.AssemblyProductAttribute("PymeCo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PymeCo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

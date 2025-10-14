@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>183aca10-5d13-4d00-a69a-41e1a514093d</ProjectGuid>
+    <ProjectGuid>{183ACA10-5D13-4D00-A69A-41E1A514093D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Pyme.Abstracciones</RootNamespace>
@@ -31,24 +31,32 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System"/>
-    
-    <Reference Include="System.Core"/>
-    <Reference Include="System.Xml.Linq"/>
-    <Reference Include="System.Data.DataSetExtensions"/>
-    
-    
-    <Reference Include="Microsoft.CSharp"/>
-    
-    <Reference Include="System.Data"/>
-    
-    <Reference Include="System.Net.Http"/>
-    
-    <Reference Include="System.Xml"/>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="AccesoADatos\Producto\ActualizarProducto\IActualizarProductoAD.cs" />
+    <Compile Include="AccesoADatos\Producto\CrearProducto\ICrearProductoAD.cs" />
+    <Compile Include="AccesoADatos\Producto\EliminarProducto\IEliminarProductoAD.cs" />
+    <Compile Include="AccesoADatos\Producto\ListarProducto\IListarProductoAD.cs" />
+    <Compile Include="AccesoADatos\Producto\ObtenerProductoPorId\IObtenerProductoPorIdAD.cs" />
+    <Compile Include="LogicaDeNegocio\Producto\ActualizarProducto\IActualizarProductoLN.cs" />
+    <Compile Include="LogicaDeNegocio\Producto\CrearProducto\ICrearProductoLN.cs" />
+    <Compile Include="LogicaDeNegocio\Producto\EliminarProducto\IEliminarProductoLN.cs" />
+    <Compile Include="LogicaDeNegocio\Producto\ListarProducto\IListarProductoLN.cs" />
+    <Compile Include="LogicaDeNegocio\Producto\ObtenerProductoPorId\IObtenerProductoPorIdLN.cs" />
+    <Compile Include="ModelosParaUI\EstadosDeProducto.cs" />
+    <Compile Include="ModelosParaUI\ProductoDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
- </Project>
+</Project>
