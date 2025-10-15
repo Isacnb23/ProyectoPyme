@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Producto.LogicaDeNegocio.Producto.EliminarProducto
+namespace Pyme.BusinessLogic.Producto.EliminarProducto
 {
     public class EliminarProductoLN : IEliminarProductoLN
     {

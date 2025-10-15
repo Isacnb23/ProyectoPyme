@@ -5,7 +5,7 @@ using Pyme.Abstracciones.LogicaDeNegocio.General;
 using Pyme.Abstracciones.ModelosParaUI;
 using Pyme.DataAccess.Producto.ActualizarProducto;
 
-namespace Producto.LogicaDeNegocio.Producto.ActualizarProducto
+namespace Pyme.BusinessLogic.Producto.ActualizarProducto
 {
     public class ActualizarProductoLN : IActualizarProductoLN
     {
