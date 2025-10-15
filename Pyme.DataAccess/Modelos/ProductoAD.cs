@@ -32,12 +32,25 @@ namespace Pyme.DataAccess.Modelos
         public string ImagenUrl { get; set; }
 
         [Column("EstadoProducto")]
-        public bool EstadoProducto { get; set; }
+        public string EstadoProductoDb { get; set; }
+
+        [NotMapped]
+        public bool EstadoProducto
+        {
+            get
+            {
+                var v = (EstadoProductoDb ?? "").Trim().ToLower();
+                return v == "activo" || v == "1" || v == "true";
+            }
+            set => EstadoProductoDb = value ? "Activo" : "Inactivo";
+        }
 
         [Column("FechaRegistro")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime FechaDeRegistro { get; set; }
 
         [Column("FechaModificacion")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime? FechaDeModificacion { get; set; }
     }
 }

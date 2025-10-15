@@ -1,21 +1,21 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-
-using Pyme.BusinessLogic.Producto.ActualizarProducto;
-using Pyme.BusinessLogic.Producto.EliminarProducto;
-using Pyme.Abstracciones.LogicaDeNegocio.ActualizarProducto;
+﻿using Pyme.Abstracciones.LogicaDeNegocio.ActualizarProducto;
 using Pyme.Abstracciones.LogicaDeNegocio.CrearProducto;
 using Pyme.Abstracciones.LogicaDeNegocio.Producto.EliminarProducto;
 using Pyme.Abstracciones.LogicaDeNegocio.Producto.ListarProducto;
 using Pyme.Abstracciones.LogicaDeNegocio.Producto.ObtenerProductoPorId;
 using Pyme.Abstracciones.ModelosParaUI;
+using Pyme.BusinessLogic.Producto.ActualizarProducto;
 using Pyme.BusinessLogic.Producto.CrearProducto;
+using Pyme.BusinessLogic.Producto.EliminarProducto;
 using Pyme.BusinessLogic.Producto.ListarProducto;
 using Pyme.BusinessLogic.Producto.ObtenerProductoPorId;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
 
 namespace PymeCo.Controllers
 {
@@ -45,23 +45,54 @@ namespace PymeCo.Controllers
         // GET: /Producto/CrearProducto
         public ActionResult CrearProducto() => View();
 
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<ActionResult> CrearProducto(ProductoDto producto /*, HttpPostedFileBase Archivo*/)
+        //{
+        //    try
+        //    {
+        //        if (!ModelState.IsValid) return View(producto);
+
+        //        int afectados = await _crearProducto.Guardar(producto);
+        //        return RedirectToAction(nameof(ListarProducto));
+        //    }
+        //    catch
+        //    {
+        //        return View(producto);
+        //    }
+        //}
+
         // POST: /Producto/CrearProducto
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> CrearProducto(ProductoDto producto /*, HttpPostedFileBase Archivo*/)
+        public async Task<ActionResult> CrearProducto(ProductoDto producto)
         {
+            if (!ModelState.IsValid)
+                return View(producto);
+
             try
             {
-                if (!ModelState.IsValid) return View(producto);
-
                 int afectados = await _crearProducto.Guardar(producto);
+
+                if (afectados <= 0)
+                {
+                    ModelState.AddModelError("", "No se realizó ninguna inserción.");
+                    return View(producto);
+                }
+
+                TempData["ok"] = "Producto creado correctamente.";
                 return RedirectToAction(nameof(ListarProducto));
             }
-            catch
+            catch (Exception ex)
             {
+                // Muestra el error en la vista (y opcionalmente loguéalo)
+                ModelState.AddModelError("", "Error al guardar: " + ex.Message);
+                System.Diagnostics.Debug.WriteLine(ex); // opcional para ver el stacktrace en Output
                 return View(producto);
             }
         }
+
 
         // GET: /Producto/EditarProducto/5
         public ActionResult EditarProducto(int id)

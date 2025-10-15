@@ -1,51 +1,48 @@
-﻿using Pyme.Abstracciones.AccesoADatos.Producto.CrearProducto;
-using Pyme.Abstracciones.ModelosParaUI;
-using Pyme.DataAccess;
-using Pyme.DataAccess.Modelos;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
+﻿using System;
 using System.Threading.Tasks;
+using Pyme.Abstracciones.AccesoADatos.Producto.CrearProducto;
+using Pyme.Abstracciones.ModelosParaUI;
+using Pyme.DataAccess.Modelos;
 
 namespace Pyme.DataAccess.Producto.CrearProducto
 {
     public class CrearProductoAD : ICrearProductoAD
     {
-        private Contexto _contexto;
-
-        public CrearProductoAD()
+        public async Task<int> Guardar(ProductoDto dto)
         {
-            _contexto = new Contexto();
-        }
-
-        public async Task<int> Guardar(ProductoDto elProducto)
-        {
-            //_contexto.Database.ExecuteSqlCommand("EXEC PROC @elParametro, @elParametro2", "", "");
-            ProductoAD elProductoAGuardar = ConvertirObjetoParaAD(elProducto);
-
-            _contexto.Producto.Add(elProductoAGuardar);
-
-            EntityState estado = _contexto.Entry(elProductoAGuardar).State = System.Data.Entity.EntityState.Added;
-            int cantidadDeDatosAgregados = await _contexto.SaveChangesAsync();
-            return cantidadDeDatosAgregados;
-        }
-
-        // {1,2,3,4}
-
-        private ProductoAD ConvertirObjetoParaAD(ProductoDto producto)
-        {
-            return new ProductoAD
+            // Un contexto por operación
+            using (var ctx = new Contexto())
             {
-                Id = producto.Id,
-                Nombre = producto.Nombre,
-                CategoriaId = producto.CategoriaId,
-                Precio = producto.Precio,
-                ImpuestoPorc = producto.ImpuestoPorc,
-                Stock = producto.Stock,
-                ImagenUrl = producto.ImagenUrl,
-                EstadoProducto = producto.EstadoProducto
-            };
+                // Asegura FK NOT NULL (1 y 2 existen en tu BD: Bebidas / Snacks)
+                var categoriaId = (dto.CategoriaId > 0) ? dto.CategoriaId : 1;
+
+                var entidad = new ProductoAD
+                {
+                    // NO asignes Id (es identidad)
+                    Nombre = dto.Nombre?.Trim(),
+                    CategoriaId = categoriaId,
+                    Precio = dto.Precio,
+                    ImpuestoPorc = dto.ImpuestoPorc,
+                    Stock = dto.Stock,
+                    ImagenUrl = NormalizarUrl(dto.ImagenUrl),
+
+                    // clave: mapear al campo real de BD (varchar)
+                    EstadoProductoDb = dto.EstadoProducto ? "Activo" : "Inactivo",
+
+                    // Fechas las pone el trigger → no asignar aquí
+                };
+
+                ctx.Producto.Add(entidad);
+                return await ctx.SaveChangesAsync();
+            }
         }
 
+        // Recorta/normaliza la URL a lo que soporte la columna (255 típico)
+        private static string NormalizarUrl(string url)
+        {
+            if (string.IsNullOrWhiteSpace(url)) return null;
+            url = url.Trim();
+            return url.Length > 255 ? url.Substring(0, 255) : url;
+        }
     }
 }

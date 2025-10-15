@@ -39,7 +39,9 @@ namespace Pyme.Abstracciones.ModelosParaUI
         public string ImagenUrl { get; set; }
 
         [DisplayName("Estado del producto")]
-        public bool EstadoProducto { get; set; }
+        [Required(ErrorMessage = "Tiene que elegir un estado del producto")]
+        [Display(Name = "Activo")]
+        public bool EstadoProducto { get; set; } = true;
 
         [DisplayName("Fecha de registro")]
         public DateTime FechaRegistro { get; set; }

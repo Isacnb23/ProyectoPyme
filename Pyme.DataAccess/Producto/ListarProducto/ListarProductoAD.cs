@@ -17,26 +17,71 @@ namespace Pyme.DataAccess.Producto.ListarProducto
             _elContexto = new Contexto();
         }
 
+        //public List<ProductoDto> Obtener()
+        //{
+        //    List<ProductoAD> laListaEnBaseDeDatos = _elContexto.Producto.ToList();
+
+        //    List<ProductoDto> laListaARetornar = (
+        //        from producto in _elContexto.Producto
+        //        select new ProductoDto
+        //        {
+        //            Id = producto.Id,
+        //            Nombre = producto.Nombre,
+        //            CategoriaId = producto.CategoriaId,
+        //            Precio = producto.Precio,
+        //            ImpuestoPorc = producto.ImpuestoPorc,
+        //            Stock = producto.Stock,
+
+
+        //            EstadoProducto = producto.EstadoProducto
+        //        }
+
+        //    ).ToList();
+
+        //    return laListaARetornar;
+        //}
         public List<ProductoDto> Obtener()
         {
-            //List<ProductoAD> laListaEnBaseDeDatos = _elContexto.Producto.ToList();
-
-            List<ProductoDto> laListaARetornar = (
-                from producto in _elContexto.Producto
-                select new ProductoDto
+            var lista = _elContexto.Producto
+                // 1) Solo columnas reales (traducibles a SQL)
+                .Select(p => new
                 {
-                    Id = producto.Id,
-                    Nombre = producto.Nombre,
-                    CategoriaId = producto.CategoriaId,
-                    Precio = producto.Precio,
-                    ImpuestoPorc = producto.ImpuestoPorc,
-                    Stock = producto.Stock,
-                    EstadoProducto = producto.EstadoProducto
-                }
+                    p.Id,
+                    p.Nombre,
+                    p.CategoriaId,
+                    p.Precio,
+                    p.ImpuestoPorc,
+                    p.Stock,
+                    p.ImagenUrl,
+                    Estado = p.EstadoProductoDb,       // <-- columna VARCHAR de BD
+                    p.FechaDeRegistro,
+                    p.FechaDeModificacion
+                })
+                .AsEnumerable() // <-- de aquí en adelante es LINQ to Objects
+                                // 2) Ya en memoria, convertimos a tu DTO con el bool
+                .Select(p => new ProductoDto
+                {
+                    Id = p.Id,
+                    Nombre = p.Nombre,
+                    CategoriaId = p.CategoriaId,
+                    Precio = p.Precio,
+                    ImpuestoPorc = p.ImpuestoPorc,
+                    Stock = p.Stock,
+                    ImagenUrl = p.ImagenUrl,
+                    EstadoProducto = ToBoolEstado(p.Estado),
+                    FechaRegistro = p.FechaDeRegistro,
+                    FechaModificacion = p.FechaDeModificacion
+                })
+                .ToList();
 
-            ).ToList();
+            return lista;
+        }
 
-            return laListaARetornar;
+        private static bool ToBoolEstado(string s)
+        {
+            if (string.IsNullOrWhiteSpace(s)) return false;
+            var v = s.Trim().ToLower();
+            return v == "activo" || v == "1" || v == "true";
         }
     }
 }

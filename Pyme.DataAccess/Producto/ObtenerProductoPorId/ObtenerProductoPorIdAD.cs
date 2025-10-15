@@ -19,19 +19,23 @@ namespace Pyme.DataAccess.Producto.ObtenerProductoPorId
         }
         public ProductoDto Obtener(int id)
         {
-            ProductoDto laListaARetornar = (from Producto in _elContexto.Producto
-                                              where Producto.Id == id
-                                              select new ProductoDto
-                                              {
-                                                  Id = Producto.Id,
-                                                  Nombre = Producto.Nombre,
-                                                  CategoriaId = Producto.CategoriaId,
-                                                  Precio = Producto.Precio,
-                                                  ImpuestoPorc = Producto.ImpuestoPorc,
-                                                  Stock = Producto.Stock,
-                                                  EstadoProducto = Producto.EstadoProducto
-                                              }).FirstOrDefault();
-            return laListaARetornar;
+            var entidad = _elContexto.Producto.FirstOrDefault(p => p.Id == id);
+
+            if (entidad == null)
+                return null;
+
+            return new ProductoDto
+            {
+                Id = entidad.Id,
+                Nombre = entidad.Nombre,
+                CategoriaId = entidad.CategoriaId,
+                Precio = entidad.Precio,
+                ImpuestoPorc = entidad.ImpuestoPorc,
+                Stock = entidad.Stock,
+                ImagenUrl = entidad.ImagenUrl,
+                EstadoProducto = entidad.EstadoProducto
+            };
         }
+
     }
 }
