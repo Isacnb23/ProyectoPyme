@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pyme.Abstracciones.LogicaDeNegocio.Producto.EliminarProducto
+namespace Pyme.Abstracciones.LogicaDeNegocio.Producto.ListarProducto
 {
-    internal class IEliminarProductoLN
+    internal class ListarProductoLN
     {
     }
 }

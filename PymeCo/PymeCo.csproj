@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Pyme.Abstracciones\Pyme.Abstracciones.csproj" />
+    <ProjectReference Include="..\Pyme.BusinessLogic\Pyme.BusinessLogic.csproj" />
   </ItemGroup>
 
 </Project>

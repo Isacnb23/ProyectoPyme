@@ -7,7 +7,7 @@ namespace Pyme.AccesoADatos
 {
     public class Contexto : DbContext
     {
-        public Contexto() : base("name=Pyme")
+        public Contexto() : base("name=Contexto")
         {
         }
 

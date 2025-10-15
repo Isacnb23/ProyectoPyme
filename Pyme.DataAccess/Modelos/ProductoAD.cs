@@ -32,6 +32,12 @@ namespace Pyme.DataAccess.Modelos
         public string ImagenUrl { get; set; }
 
         [Column("EstadoProducto")]
-        public string EstadoProducto { get; set; }
+        public bool EstadoProducto { get; set; }
+
+        [Column("FechaRegistro")]
+        public DateTime FechaDeRegistro { get; set; }
+
+        [Column("FechaModificacion")]
+        public DateTime? FechaDeModificacion { get; set; }
     }
 }

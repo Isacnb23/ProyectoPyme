@@ -41,12 +41,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Producto\ActualizarProducto\IActualizarProductoLN.cs" />
-    <Compile Include="Producto\CrearProducto\ICrearProductoLN.cs" />
-    <Compile Include="Producto\EliminarProducto\IEliminarProductoLN.cs" />
-    <Compile Include="Producto\ListarProducto\IListarProductoLN.cs" />
-    <Compile Include="Producto\ObtenerProductoPorId\IObtenerProductoPorIdLN.cs" />
+    <Compile Include="Producto\ActualizarProducto\ActualizarProductoLN.cs" />
+    <Compile Include="Producto\CrearProducto\CrearProductoLN.cs" />
+    <Compile Include="Producto\EliminarProducto\EliminarProductoLN.cs" />
+    <Compile Include="Producto\ListarProducto\ListarProductoLN.cs" />
+    <Compile Include="Producto\ObtenerProductoPorId\ObtenerProductoPorIdLN.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Pyme.Abstracciones\Pyme.Abstracciones.csproj">
+      <Project>{183aca10-5d13-4d00-a69a-41e1a514093d}</Project>
+      <Name>Pyme.Abstracciones</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pyme.DataAccess\Pyme.DataAccess.csproj">
+      <Project>{9211cb37-a2fb-4528-bc38-eca6d6d1a847}</Project>
+      <Name>Pyme.DataAccess</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

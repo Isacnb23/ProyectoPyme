@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pyme.Abstracciones.LogicaDeNegocio.CrearProducto
+namespace Pyme.Abstracciones.LogicaDeNegocio.General
 {
-    internal class ICrearProductoLN
-    {
-    }
+	public interface IFecha
+	{
+		DateTime ObtenerFechaSegunZona();
+	}
 }

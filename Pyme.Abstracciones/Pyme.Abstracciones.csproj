@@ -48,6 +48,7 @@
     <Compile Include="AccesoADatos\Producto\EliminarProducto\IEliminarProductoAD.cs" />
     <Compile Include="AccesoADatos\Producto\ListarProducto\IListarProductoAD.cs" />
     <Compile Include="AccesoADatos\Producto\ObtenerProductoPorId\IObtenerProductoPorIdAD.cs" />
+    <Compile Include="LogicaDeNegocio\General\IFecha.cs" />
     <Compile Include="LogicaDeNegocio\Producto\ActualizarProducto\IActualizarProductoLN.cs" />
     <Compile Include="LogicaDeNegocio\Producto\CrearProducto\ICrearProductoLN.cs" />
     <Compile Include="LogicaDeNegocio\Producto\EliminarProducto\IEliminarProductoLN.cs" />

@@ -2,43 +2,52 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web;
+
 namespace Pyme.Abstracciones.ModelosParaUI
 {
     public class ProductoDto
     {
         public int Id { get; set; }
+
         [DisplayName("Nombre del producto")]
-        [Required(ErrorMessage = "El nombre es requerido")]
-        [StringLength(150, MinimumLength = 2)]
+        [MinLength(3, ErrorMessage = "El nombre debe tener al menos 3 caracteres.")]
+        [Required(ErrorMessage = "El nombre del producto es obligatorio.")]
         public string Nombre { get; set; }
 
         [DisplayName("Categoría")]
-        [Required(ErrorMessage = "La categoría es requerida")]
+        [Required(ErrorMessage = "Debe seleccionar una categoría.")]
         public int CategoriaId { get; set; }
 
+        [DisplayName("Nombre de la categoría")]
+        public string CategoriaNombre { get; set; }
+
         [DisplayName("Precio")]
-        [Range(0, 999999.99, ErrorMessage = "El precio debe ser mayor o igual a 0")]
+        [Range(0, 9999999999.99, ErrorMessage = "El precio no puede ser negativo.")]
+        [Required(ErrorMessage = "El precio es obligatorio.")]
         public decimal Precio { get; set; }
 
-        [DisplayName("% Impuesto")]
-        [Range(0, 100, ErrorMessage = "El impuesto debe estar entre 0 y 100")]
+        [DisplayName("Impuesto (%)")]
+        [Range(0, 100, ErrorMessage = "El impuesto debe estar entre 0 y 100.")]
+        [Required(ErrorMessage = "Debe indicar el porcentaje de impuesto.")]
         public decimal ImpuestoPorc { get; set; }
 
-        [DisplayName("Stock")]
-        [Range(0, int.MaxValue, ErrorMessage = "El stock debe ser mayor o igual a 0")]
+        [DisplayName("Stock disponible")]
+        [Range(0, int.MaxValue, ErrorMessage = "El stock no puede ser negativo.")]
         public int Stock { get; set; }
 
-        [DisplayName("URL de imagen")]
-        [StringLength(255)]
+        [DisplayName("Imagen del producto")]
         public string ImagenUrl { get; set; }
 
-        [DisplayName("Estado")]
-        [Required]
-        public EstadosDelProducto EstadoProducto { get; set; }
+        [DisplayName("Estado del producto")]
+        public bool EstadoProducto { get; set; }
 
+        [DisplayName("Fecha de registro")]
+        public DateTime FechaRegistro { get; set; }
+
+        [DisplayName("Fecha de modificación")]
+        public DateTime? FechaModificacion { get; set; }
 
         [DisplayName("Archivo de imagen")]
-        public HttpPostedFileBase ArchivoImagen { get; set; }
-
+        public HttpPostedFileBase archivo { get; set; }
     }
 }

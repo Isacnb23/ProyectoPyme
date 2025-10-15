@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pyme.Abstracciones.LogicaDeNegocio.Producto.ListarProducto
+namespace Pyme.Abstracciones.LogicaDeNegocio.ActualizarProducto
 {
-    internal class IListarProductoLN
+    internal class ActualizarProductoLN
     {
     }
 }

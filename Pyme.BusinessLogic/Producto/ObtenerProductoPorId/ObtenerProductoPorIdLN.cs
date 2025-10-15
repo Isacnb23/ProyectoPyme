@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Pyme.Abstracciones.LogicaDeNegocio.Producto.ObtenerProductoPorId
 {
-    internal class IObtenerProductoPorIdLN
+    internal class ObtenerProductoPorIdLN
     {
     }
 }
