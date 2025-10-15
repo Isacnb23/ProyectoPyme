@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Producto.AccesoADatos.Producto.ObtenerProductoPorId
+namespace Pyme.DataAccess.Producto.ObtenerProductoPorId
 {
     public class ObtenerProductoPorIdAD : IObtenerProductoPorIdAD
     {

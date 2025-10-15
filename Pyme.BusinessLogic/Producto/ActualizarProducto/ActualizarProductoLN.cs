@@ -1,12 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Inventario.LogicaDeNegocio.General;
+using Pyme.Abstracciones.AccesoADatos.Producto.ActualizarProducto;
+using Pyme.Abstracciones.LogicaDeNegocio.ActualizarProducto;
+using Pyme.Abstracciones.LogicaDeNegocio.General;
+using Pyme.Abstracciones.ModelosParaUI;
+using Pyme.DataAccess.Producto.ActualizarProducto;
 
-namespace Pyme.Abstracciones.LogicaDeNegocio.ActualizarProducto
+namespace Producto.LogicaDeNegocio.Producto.ActualizarProducto
 {
-    internal class ActualizarProductoLN
+    public class ActualizarProductoLN : IActualizarProductoLN
     {
+        private IActualizarProductoAD _actualizarProductoAD;
+        private IFecha _fecha; // opcional
+
+        public ActualizarProductoLN()
+        {
+            _actualizarProductoAD = new ActualizarProductoAD();
+            _fecha = new Fecha(); // opcional
+        }
+
+        public int Actualizar(ProductoDto elProducto)
+        {
+            int cantidadDeResultados = _actualizarProductoAD.Actualizar(elProducto);
+            return cantidadDeResultados;
+        }
     }
 }

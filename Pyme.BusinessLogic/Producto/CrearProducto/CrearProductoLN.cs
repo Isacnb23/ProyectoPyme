@@ -1,12 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Pyme.Abstracciones.AccesoADatos.Producto.CrearProducto;
+using Pyme.Abstracciones.LogicaDeNegocio.CrearProducto;   // ← este sí
+using Pyme.Abstracciones.ModelosParaUI;
+using Pyme.DataAccess.Producto.CrearProducto;
 using System.Threading.Tasks;
 
-namespace Pyme.Abstracciones.LogicaDeNegocio.CrearProducto
+namespace Pyme.BusinessLogic.Producto.CrearProducto
 {
-    internal class CrearProductoLN
+    public class CrearProductoLN : ICrearProductoLN
     {
+        private readonly ICrearProductoAD _crearProductoAD;
+
+        public CrearProductoLN()
+        {
+            _crearProductoAD = new CrearProductoAD();
+        }
+
+        public Task<int> Guardar(ProductoDto elProducto)
+        {
+            return _crearProductoAD.Guardar(elProducto);
+        }
     }
 }

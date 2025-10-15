@@ -1,12 +1,28 @@
-﻿using System;
+﻿using Pyme.Abstracciones.AccesoADatos.Producto.EliminarProducto;
+using Pyme.Abstracciones.LogicaDeNegocio.Producto.EliminarProducto;
+using Pyme.DataAccess.Producto.EliminarProducto;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pyme.Abstracciones.LogicaDeNegocio.Producto.EliminarProducto
+namespace Producto.LogicaDeNegocio.Producto.EliminarProducto
 {
-    internal class EliminarProductoLN
+    public class EliminarProductoLN : IEliminarProductoLN
     {
+        private IEliminarProductoAD _eliminarProductoAD;
+
+        public EliminarProductoLN()
+        {
+            _eliminarProductoAD = new EliminarProductoAD();
+        }
+
+        public int Eliminar(int id)
+        {
+            int cantidadDeResultados = _eliminarProductoAD.Eliminar(id);
+            return cantidadDeResultados;
+        }
     }
 }
+

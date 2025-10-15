@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="General\Fecha.cs" />
     <Compile Include="Producto\ActualizarProducto\ActualizarProductoLN.cs" />
     <Compile Include="Producto\CrearProducto\CrearProductoLN.cs" />
     <Compile Include="Producto\EliminarProducto\EliminarProductoLN.cs" />

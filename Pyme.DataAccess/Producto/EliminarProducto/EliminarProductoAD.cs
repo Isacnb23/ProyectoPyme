@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Producto.AccesoADatos.Producto.EliminarProducto
+namespace Pyme.DataAccess.Producto.EliminarProducto
 {
     public class EliminarProductoAD : IEliminarProductoAD
     {
