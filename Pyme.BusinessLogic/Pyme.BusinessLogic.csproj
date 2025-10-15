@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D758FDBB-D91D-48A9-AA74-7EC6FECE36F7}</ProjectGuid>
+    <ProjectGuid>{5A8C3B11-E438-4E52-9FD7-E23E60D71709}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Pyme.BusinessLogic</RootNamespace>
@@ -51,11 +51,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Pyme.Abstracciones\Pyme.Abstracciones.csproj">
-      <Project>{183aca10-5d13-4d00-a69a-41e1a514093d}</Project>
+      <Project>{d25d9a68-9801-49ff-8a12-b6dff7f3ea55}</Project>
       <Name>Pyme.Abstracciones</Name>
     </ProjectReference>
     <ProjectReference Include="..\Pyme.DataAccess\Pyme.DataAccess.csproj">
-      <Project>{9211cb37-a2fb-4528-bc38-eca6d6d1a847}</Project>
+      <Project>{0eef3dd9-207b-40fe-b051-f871529c9a2f}</Project>
       <Name>Pyme.DataAccess</Name>
     </ProjectReference>
   </ItemGroup>

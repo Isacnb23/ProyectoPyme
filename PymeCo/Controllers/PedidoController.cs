@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
+using System.Web.Mvc;
 
 namespace PymeCo.Controllers
 {
     public class PedidoController : Controller
     {
-        public IActionResult Index()
+        public ActionResult Index()
         {
             return View();
         }

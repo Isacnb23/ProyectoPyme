@@ -1,8 +1,9 @@
-﻿<header class="flex items-center justify-between p-4 bg-white shadow-sm">
+﻿@* Views/Shared/_Topbar.cshtml *@
+<header class="flex items-center justify-between p-4 bg-white shadow-sm">
     <!-- Left: Logo -->
     <div class="flex items-center gap-2">
         <h1 class="text-2xl font-bold cursor-pointer bg-clip-text text-transparent bg-gradient-to-r from-[color:var(--primary)] to-purple-400 ml-4">
-            <a asp-controller="Home" asp-action="Index">Pyme Co.</a>
+            <a href="@Url.Action("Index", "Home")">Pyme Co.</a>
         </h1>
     </div>
 

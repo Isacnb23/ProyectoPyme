@@ -1,12 +1,14 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
+
 using Pyme.BusinessLogic.Producto.ActualizarProducto;
 using Pyme.BusinessLogic.Producto.EliminarProducto;
 using Pyme.Abstracciones.LogicaDeNegocio.ActualizarProducto;
 using Pyme.Abstracciones.LogicaDeNegocio.CrearProducto;
-//using Pyme.Abstracciones.LogicaDeNegocio.Producto.ActualizarProducto;
-//using Pyme.Abstracciones.LogicaDeNegocio.Producto.CrearProducto;
 using Pyme.Abstracciones.LogicaDeNegocio.Producto.EliminarProducto;
 using Pyme.Abstracciones.LogicaDeNegocio.Producto.ListarProducto;
 using Pyme.Abstracciones.LogicaDeNegocio.Producto.ObtenerProductoPorId;
@@ -14,10 +16,6 @@ using Pyme.Abstracciones.ModelosParaUI;
 using Pyme.BusinessLogic.Producto.CrearProducto;
 using Pyme.BusinessLogic.Producto.ListarProducto;
 using Pyme.BusinessLogic.Producto.ObtenerProductoPorId;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace PymeCo.Controllers
 {
@@ -29,42 +27,32 @@ namespace PymeCo.Controllers
         private readonly IActualizarProductoLN _actualizarProducto = new ActualizarProductoLN();
         private readonly IEliminarProductoLN _eliminarProducto = new EliminarProductoLN();
 
-        private readonly IWebHostEnvironment _env;
-        public ProductoController(IWebHostEnvironment env) => _env = env;
-
         // GET: /Producto/ListarProducto
-        public IActionResult ListarProducto()
+        public ActionResult ListarProducto()
         {
             List<ProductoDto> lista = _listarProducto.Obtener();
             return View(lista);
         }
 
         // GET: /Producto/DetallesProducto/5
-        public IActionResult DetallesProducto(int id)
+        public ActionResult DetallesProducto(int id)
         {
             var prod = _obtenerProductoPorId.Obtener(id);
-            if (prod == null) return NotFound();
+            if (prod == null) return HttpNotFound();
             return View(prod);
         }
 
         // GET: /Producto/CrearProducto
-        public IActionResult CrearProducto() => View();
+        public ActionResult CrearProducto() => View();
 
         // POST: /Producto/CrearProducto
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CrearProducto(ProductoDto producto)
+        public async Task<ActionResult> CrearProducto(ProductoDto producto /*, HttpPostedFileBase Archivo*/)
         {
             try
             {
                 if (!ModelState.IsValid) return View(producto);
-
-                // === Manejo de imagen (opcional, si tu DTO tiene IFormFile Archivo) ===
-                // if (producto.Archivo != null && producto.Archivo.Length > 0)
-                // {
-                //     GuardarArchivo(producto.Archivo, producto.Id.ToString());
-                // }
-                // producto.EstadoProducto = true; // default Activo si querés
 
                 int afectados = await _crearProducto.Guardar(producto);
                 return RedirectToAction(nameof(ListarProducto));
@@ -76,27 +64,21 @@ namespace PymeCo.Controllers
         }
 
         // GET: /Producto/EditarProducto/5
-        public IActionResult EditarProducto(int id)
+        public ActionResult EditarProducto(int id)
         {
             var prod = _obtenerProductoPorId.Obtener(id);
-            if (prod == null) return NotFound();
+            if (prod == null) return HttpNotFound();
             return View(prod);
         }
 
         // POST: /Producto/EditarProducto
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult EditarProducto(ProductoDto producto)
+        public ActionResult EditarProducto(ProductoDto producto /*, HttpPostedFileBase Archivo*/)
         {
             try
             {
                 if (!ModelState.IsValid) return View(producto);
-
-                // === Manejo de imagen (opcional)
-                // if (producto.Archivo != null && producto.Archivo.Length > 0)
-                // {
-                //     GuardarArchivo(producto.Archivo, producto.Id.ToString());
-                // }
 
                 int afectados = _actualizarProducto.Actualizar(producto);
                 return RedirectToAction(nameof(ListarProducto));
@@ -108,17 +90,17 @@ namespace PymeCo.Controllers
         }
 
         // GET: /Producto/EliminarProducto/5
-        public IActionResult EliminarProducto(int id)
+        public ActionResult EliminarProducto(int id)
         {
             var prod = _obtenerProductoPorId.Obtener(id);
-            if (prod == null) return NotFound();
+            if (prod == null) return HttpNotFound();
             return View(prod);
         }
 
         // POST: /Producto/EliminarProducto (Confirmación)
         [HttpPost, ActionName("EliminarProducto")]
         [ValidateAntiForgeryToken]
-        public IActionResult EliminarProductoConfirmado(int id)
+        public ActionResult EliminarProductoConfirmado(int id)
         {
             try
             {
@@ -131,45 +113,46 @@ namespace PymeCo.Controllers
             }
         }
 
-        // ====== Imagen por Id (opcional, igual al patrón de Inventario) ======
-        public IActionResult ImagenDeProductoPorId(int id)
+        // ====== Imagen por Id (opcional, patrón similar a Inventario) ======
+        public ActionResult ImagenDeProductoPorId(int id)
         {
             string codigo = id.ToString();
-            string carpeta = Path.Combine(_env.WebRootPath, "Content", "Uploads");
-            string[] extensiones = new[] { ".jpg", ".jpeg", ".png", ".gif", ".webp", ".svg" };
+            string carpeta = Server.MapPath("~/Content/Uploads");
+            string[] extensiones = { ".jpg", ".jpeg", ".png", ".gif", ".webp", ".svg" };
 
             foreach (var ext in extensiones)
             {
                 var ruta = Path.Combine(carpeta, codigo + ext);
                 if (System.IO.File.Exists(ruta))
-                    return PhysicalFile(ruta, ObtenerContentType(ext));
+                    return File(ruta, ObtenerContentType(ext));
             }
             return PlaceholderImage();
         }
 
-        private IActionResult PlaceholderImage()
+        private ActionResult PlaceholderImage()
         {
-            string ruta = Path.Combine(_env.WebRootPath, "Content", "Images", "placeholder.svg");
+            string ruta = Server.MapPath("~/Content/Images/placeholder.svg");
             if (System.IO.File.Exists(ruta))
-                return PhysicalFile(ruta, "image/svg+xml");
-            return NotFound();
+                return File(ruta, "image/svg+xml");
+            return HttpNotFound();
         }
 
-        private string ObtenerContentType(string ext) => ext.ToLowerInvariant() switch
+        private string ObtenerContentType(string ext)
         {
-            ".jpg" or ".jpeg" => "image/jpeg",
-            ".png" => "image/png",
-            ".gif" => "image/gif",
-            ".webp" => "image/webp",
-            ".svg" => "image/svg+xml",
-            _ => "application/octet-stream"
-        };
+            ext = (ext ?? "").ToLowerInvariant();
+            if (ext == ".jpg" || ext == ".jpeg") return "image/jpeg";
+            if (ext == ".png") return "image/png";
+            if (ext == ".gif") return "image/gif";
+            if (ext == ".webp") return "image/webp";
+            if (ext == ".svg") return "image/svg+xml";
+            return "application/octet-stream";
+        }
 
-        private void GuardarArchivo(IFormFile archivo, string nombreBase)
+        private void GuardarArchivo(HttpPostedFileBase archivo, string nombreBase)
         {
-            if (archivo == null || archivo.Length <= 0 || string.IsNullOrWhiteSpace(nombreBase)) return;
+            if (archivo == null || archivo.ContentLength <= 0 || string.IsNullOrWhiteSpace(nombreBase)) return;
 
-            string carpeta = Path.Combine(_env.WebRootPath, "Content", "Uploads");
+            string carpeta = Server.MapPath("~/Content/Uploads");
             if (!Directory.Exists(carpeta)) Directory.CreateDirectory(carpeta);
 
             string extension = Path.GetExtension(archivo.FileName);
@@ -181,8 +164,7 @@ namespace PymeCo.Controllers
                 try { System.IO.File.Delete(existente); } catch { }
             }
 
-            using var fs = new FileStream(destino, FileMode.Create);
-            archivo.CopyTo(fs);
+            archivo.SaveAs(destino);
         }
     }
 }

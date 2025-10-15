@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{183ACA10-5D13-4D00-A69A-41E1A514093D}</ProjectGuid>
+    <ProjectGuid>{D25D9A68-9801-49FF-8A12-B6DFF7F3EA55}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Pyme.Abstracciones</RootNamespace>
@@ -58,6 +58,5 @@
     <Compile Include="ModelosParaUI\ProductoDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

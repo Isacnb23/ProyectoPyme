@@ -1,39 +1,48 @@
-﻿<!DOCTYPE html>
+﻿@* Views/Shared/_Layout.cshtml *@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - PymeCo</title>
-    <script type="importmap"></script>@* 
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> *@
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/PymeCo.styles.css" asp-append-version="true" />
+    <title>@ViewBag.Title - PymeCo</title>
+
+    @* If you use BundleConfig, prefer these:
+        @Styles.Render("~/Content/css")
+        Otherwise link directly: *@
+    <link rel="stylesheet" href="@Url.Content("~/Content/Site.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/PymeCo.styles.css")" />
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/a2b4d3b6b5.js" crossorigin="anonymous"></script>
-
 </head>
-<body class="flex flex-col w-screen min-h-screen bg-gray-50 overflow-x-hidden ">
+
+<body class="flex flex-col w-screen min-h-screen bg-gray-50 overflow-x-hidden">
     <!-- Topbar -->
-    @await Html.PartialAsync("_Topbar")
+    @Html.Partial("_Topbar")
 
     <!-- Side to side layout -->
     <div class="flex flex-1">
-        @await Html.PartialAsync("_Sidebar")
+        @Html.Partial("_Sidebar")
 
         <main class="flex-1 p-6">
             @RenderBody()
         </main>
     </div>
 
-    @await Html.PartialAsync("_Footer")
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script>
-        lucide.createIcons();
-    </script>
+    @Html.Partial("_Footer")
 
-    @await RenderSectionAsync("Scripts", required: false)
+    @* If you use bundles (recommended in MVC 5):
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap") *@
+
+    @* Or load directly if those files exist in your project *@
+    <script src="@Url.Content("~/lib/jquery/dist/jquery.min.js")"></script>
+    <script src="@Url.Content("~/lib/bootstrap/dist/js/bootstrap.bundle.min.js")"></script>
+    <script src="@Url.Content("~/js/site.js")"></script>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>lucide.createIcons();</script>
+
+    @RenderSection("Scripts", required: false)
 </body>
 </html>
