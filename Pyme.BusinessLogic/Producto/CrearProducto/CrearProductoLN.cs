@@ -1,5 +1,5 @@
 ﻿using Pyme.Abstracciones.AccesoADatos.Producto.CrearProducto;
-using Pyme.Abstracciones.LogicaDeNegocio.CrearProducto;   // ← este sí
+using Pyme.Abstracciones.LogicaDeNegocio.Producto.CrearProducto;
 using Pyme.Abstracciones.ModelosParaUI;
 using Pyme.DataAccess.Producto.CrearProducto;
 using System.Threading.Tasks;

@@ -10,15 +10,13 @@ namespace Pyme.DataAccess.Producto.CrearProducto
     {
         public async Task<int> Guardar(ProductoDto dto)
         {
-            // Un contexto por operación
             using (var ctx = new Contexto())
             {
-                // Asegura FK NOT NULL (1 y 2 existen en tu BD: Bebidas / Snacks)
                 var categoriaId = (dto.CategoriaId > 0) ? dto.CategoriaId : 1;
 
                 var entidad = new ProductoAD
                 {
-                    // NO asignes Id (es identidad)
+                    
                     Nombre = dto.Nombre?.Trim(),
                     CategoriaId = categoriaId,
                     Precio = dto.Precio,
@@ -26,10 +24,9 @@ namespace Pyme.DataAccess.Producto.CrearProducto
                     Stock = dto.Stock,
                     ImagenUrl = NormalizarUrl(dto.ImagenUrl),
 
-                    // clave: mapear al campo real de BD (varchar)
                     EstadoProductoDb = dto.EstadoProducto ? "Activo" : "Inactivo",
 
-                    // Fechas las pone el trigger → no asignar aquí
+                    
                 };
 
                 ctx.Producto.Add(entidad);
@@ -37,7 +34,6 @@ namespace Pyme.DataAccess.Producto.CrearProducto
             }
         }
 
-        // Recorta/normaliza la URL a lo que soporte la columna (255 típico)
         private static string NormalizarUrl(string url)
         {
             if (string.IsNullOrWhiteSpace(url)) return null;

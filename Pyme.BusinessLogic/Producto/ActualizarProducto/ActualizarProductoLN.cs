@@ -1,6 +1,6 @@
 ﻿using Inventario.LogicaDeNegocio.General;
 using Pyme.Abstracciones.AccesoADatos.Producto.ActualizarProducto;
-using Pyme.Abstracciones.LogicaDeNegocio.ActualizarProducto;
+using Pyme.Abstracciones.LogicaDeNegocio.Producto.ActualizarProducto;
 using Pyme.Abstracciones.LogicaDeNegocio.General;
 using Pyme.Abstracciones.ModelosParaUI;
 using Pyme.DataAccess.Producto.ActualizarProducto;

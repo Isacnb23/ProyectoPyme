@@ -1,5 +1,5 @@
-﻿using Pyme.Abstracciones.LogicaDeNegocio.ActualizarProducto;
-using Pyme.Abstracciones.LogicaDeNegocio.CrearProducto;
+﻿using Pyme.Abstracciones.LogicaDeNegocio.Producto.ActualizarProducto;
+using Pyme.Abstracciones.LogicaDeNegocio.Producto.CrearProducto;
 using Pyme.Abstracciones.LogicaDeNegocio.Producto.EliminarProducto;
 using Pyme.Abstracciones.LogicaDeNegocio.Producto.ListarProducto;
 using Pyme.Abstracciones.LogicaDeNegocio.Producto.ObtenerProductoPorId;
@@ -46,23 +46,6 @@ namespace PymeCo.Controllers
         public ActionResult CrearProducto() => View();
 
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<ActionResult> CrearProducto(ProductoDto producto /*, HttpPostedFileBase Archivo*/)
-        //{
-        //    try
-        //    {
-        //        if (!ModelState.IsValid) return View(producto);
-
-        //        int afectados = await _crearProducto.Guardar(producto);
-        //        return RedirectToAction(nameof(ListarProducto));
-        //    }
-        //    catch
-        //    {
-        //        return View(producto);
-        //    }
-        //}
-
         // POST: /Producto/CrearProducto
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -95,30 +78,50 @@ namespace PymeCo.Controllers
 
 
         // GET: /Producto/EditarProducto/5
+        [HttpGet]
         public ActionResult EditarProducto(int id)
         {
+            
             var prod = _obtenerProductoPorId.Obtener(id);
+
             if (prod == null) return HttpNotFound();
+
             return View(prod);
         }
+
 
         // POST: /Producto/EditarProducto
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditarProducto(ProductoDto producto /*, HttpPostedFileBase Archivo*/)
+        public ActionResult EditarProducto(ProductoDto producto)
         {
+            
+            if (!ModelState.IsValid)
+                return View(producto);
+
             try
             {
-                if (!ModelState.IsValid) return View(producto);
-
+                
                 int afectados = _actualizarProducto.Actualizar(producto);
+
+                if (afectados <= 0)
+                {
+                    ModelState.AddModelError("", "No se actualizó ningún registro.");
+                    return View(producto);
+                }
+
+                TempData["Ok"] = "Producto actualizado correctamente.";
+
                 return RedirectToAction(nameof(ListarProducto));
             }
-            catch
+            catch (Exception ex)
             {
+                
+                ModelState.AddModelError("", "Error al actualizar: " + ex.Message);
                 return View(producto);
             }
         }
+
 
         // GET: /Producto/EliminarProducto/5
         public ActionResult EliminarProducto(int id)

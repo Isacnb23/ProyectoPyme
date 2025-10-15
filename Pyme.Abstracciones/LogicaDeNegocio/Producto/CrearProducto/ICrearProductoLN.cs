@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Pyme.Abstracciones.ModelosParaUI;
 
-namespace Pyme.Abstracciones.LogicaDeNegocio.CrearProducto
+namespace Pyme.Abstracciones.LogicaDeNegocio.Producto.CrearProducto
 {
     public interface ICrearProductoLN
     {
