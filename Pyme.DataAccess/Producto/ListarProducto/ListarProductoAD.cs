@@ -1,7 +1,7 @@
 ﻿using Pyme.Abstracciones.AccesoADatos.Producto.ListarProducto;
 using Pyme.Abstracciones.LogicaDeNegocio.Producto.ListarProducto;
 using Pyme.Abstracciones.ModelosParaUI;
-using Pyme.AccesoADatos;
+using Pyme.DataAccess;
 using Pyme.DataAccess.Modelos;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,6 +1,6 @@
 ﻿using Pyme.Abstracciones.AccesoADatos.Producto.ActualizarProducto;
 using Pyme.Abstracciones.ModelosParaUI;
-using Pyme.AccesoADatos;
+using Pyme.DataAccess;
 using Pyme.DataAccess.Modelos;
 using System.Data.Entity;
 using System.Linq;

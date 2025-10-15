@@ -1,7 +1,7 @@
 ﻿using Pyme.Abstracciones.AccesoADatos.Producto.ObtenerProductoPorId;
 using Pyme.Abstracciones.ModelosParaUI;
 using Pyme.DataAccess.Modelos;
-using Pyme.AccesoADatos;
+using Pyme.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
