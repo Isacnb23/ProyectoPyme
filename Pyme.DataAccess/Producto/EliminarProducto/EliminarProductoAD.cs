@@ -13,7 +13,8 @@ namespace Pyme.DataAccess.Producto.EliminarProducto
 {
     public class EliminarProductoAD : IEliminarProductoAD
     {
-        private Contexto _contexto;
+        private readonly Contexto _contexto;
+
         public EliminarProductoAD()
         {
             _contexto = new Contexto();
@@ -21,11 +22,11 @@ namespace Pyme.DataAccess.Producto.EliminarProducto
 
         public int Eliminar(int id)
         {
-            ProductoAD elProductoEnBaseDeDatos = _contexto.Producto.Where(Producto => Producto.Id == id).FirstOrDefault();
-            _contexto.Producto.Remove(elProductoEnBaseDeDatos);
-            EntityState estado = _contexto.Entry(elProductoEnBaseDeDatos).State = System.Data.Entity.EntityState.Deleted;
-            int cantidadDeDatosAgregados = _contexto.SaveChanges();
-            return cantidadDeDatosAgregados;
+            var entidad = _contexto.Producto.FirstOrDefault(p => p.Id == id);
+            if (entidad == null) return 0;
+
+            _contexto.Producto.Remove(entidad);
+            return _contexto.SaveChanges();
         }
     }
 }

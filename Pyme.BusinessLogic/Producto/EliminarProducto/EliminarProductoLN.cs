@@ -11,7 +11,7 @@ namespace Pyme.BusinessLogic.Producto.EliminarProducto
 {
     public class EliminarProductoLN : IEliminarProductoLN
     {
-        private IEliminarProductoAD _eliminarProductoAD;
+        private readonly IEliminarProductoAD _eliminarProductoAD;
 
         public EliminarProductoLN()
         {
@@ -20,8 +20,8 @@ namespace Pyme.BusinessLogic.Producto.EliminarProducto
 
         public int Eliminar(int id)
         {
-            int cantidadDeResultados = _eliminarProductoAD.Eliminar(id);
-            return cantidadDeResultados;
+            if (id <= 0) throw new ArgumentException("Id inválido", nameof(id));
+            return _eliminarProductoAD.Eliminar(id);
         }
     }
 }

@@ -126,6 +126,7 @@ namespace PymeCo.Controllers
         // GET: /Producto/EliminarProducto/5
         public ActionResult EliminarProducto(int id)
         {
+            if (id <= 0) return HttpNotFound();
             var prod = _obtenerProductoPorId.Obtener(id);
             if (prod == null) return HttpNotFound();
             return View(prod);
@@ -138,14 +139,29 @@ namespace PymeCo.Controllers
         {
             try
             {
-                _eliminarProducto.Eliminar(id);
+                int afectados = _eliminarProducto.Eliminar(id);
+                if (afectados > 0)
+                {
+                    TempData["Ok"] = "Producto eliminado correctamente.";
+                }
+                else
+                {
+                    TempData["Error"] = "El producto no existe o ya fue eliminado.";
+                }
                 return RedirectToAction(nameof(ListarProducto));
             }
-            catch
+            catch (System.Data.Entity.Infrastructure.DbUpdateException)
             {
-                return View();
+                TempData["Error"] = "No se puede eliminar: el producto está relacionado con otros registros.";
+                return RedirectToAction(nameof(EliminarProducto), new { id });
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = "Ocurrió un error al eliminar: " + ex.Message;
+                return RedirectToAction(nameof(EliminarProducto), new { id });
             }
         }
+
 
         // ====== Imagen por Id (opcional, patrón similar a Inventario) ======
         public ActionResult ImagenDeProductoPorId(int id)
