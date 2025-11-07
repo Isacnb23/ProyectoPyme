@@ -1,6 +1,6 @@
-﻿@* @model IEnumerable<Pyme.Abstracciones.ModelosParaUI.ClienteDto> *@
+﻿@model IEnumerable<Pyme.Abstracciones.ModelosParaUI.ClienteDto>
 
-@* @{
+@{
     ViewBag.Title = "Listado de Clientes";
 }
 
@@ -32,6 +32,8 @@
                     <th class="px-6 py-3 font-semibold">Correo</th>
                     <th class="px-6 py-3 font-semibold">Teléfono</th>
                     <th class="px-6 py-3 font-semibold">Dirección</th>
+                    <th class="px-6 py-3 font-semibold">Fecha Registro</th>
+                    <th class="px-6 py-3 font-semibold">Última Modificación</th>
                 </tr>
             </thead>
 
@@ -65,14 +67,20 @@
                             <td class="px-6 py-4">@cliente.Cedula</td>
                             <td class="px-6 py-4">@cliente.Correo</td>
                             <td class="px-6 py-4">@cliente.Telefono</td>
-                            <td class="px-6 py-4">@cliente.Direccion</td>
+                            <td class="px-6 py-4">@(!string.IsNullOrWhiteSpace(cliente.Direccion) ? cliente.Direccion : "—")</td>
+                            <td class="px-6 py-4">@cliente.FechaRegistro.ToString("dd/MM/yyyy HH:mm")</td>
+                            <td class="px-6 py-4">
+                                @(cliente.FechaModificacion.HasValue
+                                    ? cliente.FechaModificacion.Value.ToString("dd/MM/yyyy HH:mm")
+                                    : "No modificada")
+                            </td>
                         </tr>
                     }
                 }
                 else
                 {
                     <tr>
-                        <td colspan="6" class="px-6 py-6 text-center text-gray-400">
+                        <td colspan="8" class="px-6 py-6 text-center text-gray-400">
                             No hay clientes registrados.
                         </td>
                     </tr>
@@ -81,6 +89,3 @@
         </table>
     </div>
 </div>
-
- *@
-

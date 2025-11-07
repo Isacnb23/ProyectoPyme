@@ -1,4 +1,8 @@
-﻿@* @model Pyme.Abstracciones.ModelosParaUI.ClienteDto
+﻿@model Pyme.Abstracciones.ModelosParaUI.ClienteDto
+@{
+    ViewBag.Title = "Detalles del Cliente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
 <div class="max-w-2xl mx-auto bg-[color:var(--light-panel)] border border-[color:var(--border)] rounded-2xl shadow-sm p-8 mt-10">
     <h1 class="text-2xl font-bold text-[color:var(--primary)] mb-6 flex items-center gap-2">
@@ -11,14 +15,33 @@
         <div><span class="font-semibold">Cédula:</span> @Model.Cedula</div>
         <div><span class="font-semibold">Correo:</span> @Model.Correo</div>
         <div><span class="font-semibold">Teléfono:</span> @Model.Telefono</div>
-        <div class="sm:col-span-2"><span class="font-semibold">Dirección:</span> @Model.Direccion</div>
+
+        <div class="sm:col-span-2">
+            <span class="font-semibold">Dirección:</span>
+            <div class="mt-1 text-[color:var(--txt-secondary)]">
+                @(string.IsNullOrWhiteSpace(Model.Direccion) ? "No registrada" : Model.Direccion)
+            </div>
+        </div>
+
+        <div>
+            <span class="font-semibold">Fecha de Registro:</span>
+            <div class="text-[color:var(--txt-secondary)] mt-1">
+                @(Model.FechaRegistro != DateTime.MinValue ? Model.FechaRegistro.ToString("dd/MM/yyyy HH:mm") : "N/A")
+            </div>
+        </div>
+
+        <div>
+            <span class="font-semibold">Última Modificación:</span>
+            <div class="text-[color:var(--txt-secondary)] mt-1">
+                @(Model.FechaModificacion.HasValue ? Model.FechaModificacion.Value.ToString("dd/MM/yyyy HH:mm") : "No modificada")
+            </div>
+        </div>
     </div>
 
     <div class="mt-8 flex justify-end">
-        <a asp-action="Index" class="px-5 py-2.5 border border-[color:var(--border)] text-[color:var(--txt-secondary)] rounded-xl hover:bg-[color:var(--light-bg)] transition-colors">
+        <a href="@Url.Action("ListarCliente","Cliente")"
+           class="px-5 py-2.5 border border-[color:var(--border)] text-[color:var(--txt-secondary)] rounded-xl hover:bg-[color:var(--light-bg)] transition-colors">
             Volver
         </a>
     </div>
 </div>
-
- *@

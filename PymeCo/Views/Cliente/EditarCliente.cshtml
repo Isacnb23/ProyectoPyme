@@ -1,42 +1,72 @@
-﻿@* @model Pyme.Abstracciones.ModelosParaUI.ClienteDto
+﻿@model Pyme.Abstracciones.ModelosParaUI.ClienteDto
+@{
+    ViewBag.Title = "Editar Cliente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
 <div class="max-w-2xl mx-auto bg-[color:var(--light-panel)] border border-[color:var(--border)] rounded-2xl shadow-sm p-8 mt-10">
-    <h1 class="text-2xl font-bold text-[color:var(--primary)] mb-6 flex items-center gap-2">
-        <i data-lucide="edit-2" class="w-6 h-6 text-[color:var(--primary-dark)]"></i>
+    <h1 class="text-2xl font-bold text-[color:var(--txt-primary)] mb-6 flex items-center gap-2">
+        <i data-lucide="edit-2" class="w-6 h-6 text-[color:var(--primary)]"></i>
         Editar Cliente
     </h1>
 
-    <form asp-action="Edit">
-        <input type="hidden" asp-for="Id" />
+    @using (Html.BeginForm("EditarCliente", "Cliente", FormMethod.Post, new { @class = "space-y-6" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-[color:var(--error)] text-sm" })
+        @Html.HiddenFor(m => m.Id)
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
-                <label asp-for="Nombre" class="block text-sm font-medium text-[color:var(--txt-secondary)] mb-2"></label>
-                <input asp-for="Nombre" class="w-full border border-[color:var(--border)] rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-[color:var(--primary)]" />
-                <span asp-validation-for="Nombre" class="text-[color:var(--error)] text-sm"></span>
+                @Html.LabelFor(m => m.Nombre, new { @class = "block text-sm font-medium text-[color:var(--txt-secondary)] mb-2" })
+                @Html.TextBoxFor(m => m.Nombre, new { @class = "w-full border border-[color:var(--border)] rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-[color:var(--primary)]", maxlength = 150, placeholder = "Nombre completo del cliente" })
+                @Html.ValidationMessageFor(m => m.Nombre, "", new { @class = "text-[color:var(--error)] text-sm" })
             </div>
 
             <div>
-                <label asp-for="Correo" class="block text-sm font-medium text-[color:var(--txt-secondary)] mb-2"></label>
-                <input asp-for="Correo" type="email" class="w-full border border-[color:var(--border)] rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-[color:var(--primary)]" />
-                <span asp-validation-for="Correo" class="text-[color:var(--error)] text-sm"></span>
+                @Html.LabelFor(m => m.Cedula, new { @class = "block text-sm font-medium text-[color:var(--txt-secondary)] mb-2" })
+                @Html.TextBoxFor(m => m.Cedula, new { @class = "w-full border border-[color:var(--border)] rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-[color:var(--primary)]", maxlength = 50, placeholder = "Cédula" })
+                @Html.ValidationMessageFor(m => m.Cedula, "", new { @class = "text-[color:var(--error)] text-sm" })
+            </div>
+
+            <div>
+                @Html.LabelFor(m => m.Correo, new { @class = "block text-sm font-medium text-[color:var(--txt-secondary)] mb-2" })
+                @Html.TextBoxFor(m => m.Correo, new { @class = "w-full border border-[color:var(--border)] rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-[color:var(--primary)]", type = "email", maxlength = 100, placeholder = "correo@ejemplo.com" })
+                @Html.ValidationMessageFor(m => m.Correo, "", new { @class = "text-[color:var(--error)] text-sm" })
+            </div>
+
+            <div>
+                @Html.LabelFor(m => m.Telefono, new { @class = "block text-sm font-medium text-[color:var(--txt-secondary)] mb-2" })
+                @Html.TextBoxFor(m => m.Telefono, new { @class = "w-full border border-[color:var(--border)] rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-[color:var(--primary)]", maxlength = 50, placeholder = "Número de teléfono" })
+                @Html.ValidationMessageFor(m => m.Telefono, "", new { @class = "text-[color:var(--error)] text-sm" })
             </div>
 
             <div class="sm:col-span-2">
-                <label asp-for="Direccion" class="block text-sm font-medium text-[color:var(--txt-secondary)] mb-2"></label>
-                <input asp-for="Direccion" class="w-full border border-[color:var(--border)] rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-[color:var(--primary)]" />
-                <span asp-validation-for="Direccion" class="text-[color:var(--error)] text-sm"></span>
+                @Html.LabelFor(m => m.Direccion, new { @class = "block text-sm font-medium text-[color:var(--txt-secondary)] mb-2" })
+                @Html.TextAreaFor(m => m.Direccion, new { @class = "w-full border border-[color:var(--border)] rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-[color:var(--primary)]", rows = "3", maxlength = 255, placeholder = "Dirección del cliente" })
+                @Html.ValidationMessageFor(m => m.Direccion, "", new { @class = "text-[color:var(--error)] text-sm" })
+            </div>
+
+            <div>
+                @Html.LabelFor(m => m.FechaRegistro, new { @class = "block text-sm font-medium text-[color:var(--txt-secondary)] mb-2" })
+                @Html.TextBoxFor(m => m.FechaRegistro, "{0:yyyy-MM-dd HH:mm}", new { @class = "w-full border border-[color:var(--border)] rounded-xl px-4 py-2.5 bg-gray-100 text-gray-500", @readonly = "readonly" })
+            </div>
+
+            <div>
+                @Html.LabelFor(m => m.FechaModificacion, new { @class = "block text-sm font-medium text-[color:var(--txt-secondary)] mb-2" })
+                @Html.TextBoxFor(m => m.FechaModificacion, "{0:yyyy-MM-dd HH:mm}", new { @class = "w-full border border-[color:var(--border)] rounded-xl px-4 py-2.5 bg-gray-100 text-gray-500", @readonly = "readonly" })
             </div>
         </div>
 
         <div class="mt-8 flex justify-end gap-4">
-            <a asp-action="Index" class="px-5 py-2.5 border border-[color:var(--border)] text-[color:var(--txt-secondary)] rounded-xl hover:bg-[color:var(--light-bg)] transition-colors">
-                Cancelar
-            </a>
+            @Html.ActionLink("Cancelar", "ListarCliente", "Cliente", null, new { @class = "px-5 py-2.5 border border-[color:var(--border)] text-[color:var(--txt-secondary)] rounded-xl hover:bg-[color:var(--light-bg)] transition-colors" })
             <button type="submit" class="px-5 py-2.5 bg-[color:var(--primary)] text-white font-medium rounded-xl hover:bg-[color:var(--primary-dark)] transition-colors flex items-center gap-2">
                 <i data-lucide="save" class="w-5 h-5"></i> Guardar Cambios
             </button>
         </div>
-    </form>
+    }
 </div>
- *@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
